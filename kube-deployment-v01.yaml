@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contconn-deployment-v01
+  namespace: tauro-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contconn-label-v01
+  template:
+    metadata:
+      labels:
+        app: contconn-label-v01
+    spec:
+      containers:
+        - name: contconn-container-v01
+          image: lmldocker/contconn:1.0
+          ports:
+          - containerPort: 8321

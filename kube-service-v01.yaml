@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: contconn-service-v01
+  namespace: tauro-namespace
+spec:
+  selector:
+    app: contconn-label-v01
+  ports:
+    - protocol: TCP
+      port: 8321
+      targetPort: 8322
+
+# kubectl apply -f kube-service-v01.yaml

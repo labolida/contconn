@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tauro-namespace
+
+# kubectl create -f ./kube-namespace.yaml
+# imperative mode: kubectl create namespace tauro-namespace
