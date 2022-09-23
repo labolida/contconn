@@ -197,9 +197,11 @@ DELETE
 	http://172.17.0.11:8321
 
 
-# LoadBalancer
+
+# SERVICE expose LoadBalancer
 
 	kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+
 
 
 
@@ -211,6 +213,48 @@ DELETE
 # TTY
 
 	kubectl exec -it contconn-deployment-v02-d59648bc5-mvdnc --namespace=tauro-namespace -- /bin/bash
+
+
+
+
+
+
+
+
+
+# ContConn refact
+
+
+contconn-namespace-01   service/contconn-service-01         NodePort    10.108.34.221    <none>        8321:32465/TCP           3m35s
+contconn-namespace-01   service/contconn-service-02         NodePort    10.101.127.235   <none>        8321:30781/TCP           3m34s
+contconn-namespace-01   service/contconn-service-05         ClusterIP   10.102.89.249    <none>        8321/TCP                 3m34s
+contconn-namespace-01   service/contconn-service-06         ClusterIP   10.96.198.24     <none>        8321/TCP                 3m34s
+contconn-namespace-02   service/contconn-service-03         NodePort    10.100.75.116    <none>        8321:31698/TCP           3m34s
+contconn-namespace-02   service/contconn-service-04         NodePort    10.107.117.127   <none>        8321:32740/TCP           3m34s
+contconn-namespace-02   service/contconn-service-07         ClusterIP   10.106.96.138    <none>        8321/TCP                 3m34s
+contconn-namespace-02   service/contconn-service-08         ClusterIP   10.104.15.6      <none>        8321/TCP                 3m33s
+
+
+curl http://172.17.0.11:32465
+
+
+minikube service contconn-service-01 --namespace=contconn-namespace-01 --url
+
+
+
+
+kubectl delete -f contconn-01.yaml
+kubectl delete -f contconn-02.yaml
+kubectl delete -f contconn-03.yaml
+kubectl delete -f contconn-04.yaml
+kubectl delete -f contconn-05.yaml
+kubectl delete -f contconn-06.yaml
+kubectl delete -f contconn-07.yaml
+kubectl delete -f contconn-08.yaml
+
+
+
+
 
 
 

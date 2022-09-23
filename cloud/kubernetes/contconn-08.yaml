@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contconn-deployment-08
+  namespace: contconn-namespace-02
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contconn-label-08
+  template:
+    metadata:
+      labels:
+        app: contconn-label-08
+    spec:
+      containers:
+        - name: contconn-container-08
+          image: lmldocker/contconn:1.0
+          ports:
+          - containerPort: 8321
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: contconn-service-08
+  namespace: contconn-namespace-02
+spec:
+  type: ClusterIP
+  selector:
+    app: contconn-label-08
+  ports:
+    - protocol: TCP
+      port: 8321
+      targetPort: 8321
+
+
+# kubectl apply -f contconn-01.yaml
+# kubectl delete -f contconn-01.yaml

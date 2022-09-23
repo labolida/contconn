@@ -18,3 +18,10 @@ spec:
           image: lmldocker/contconn:1.0
           ports:
           - containerPort: 8321
+
+# kubectl apply -f kube-deployment-v01.yaml
+
+#    kubectl expose deployment contconn-deployment-v01 --namespace=tauro-namespace --type NodePort --port 8321
+
+#    minikube service service/contconn-deployment-v01 --namespace=tauro-namespace --url
+

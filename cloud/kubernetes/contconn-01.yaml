@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contconn-deployment-01
+  namespace: contconn-namespace-01
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contconn-label-01
+  template:
+    metadata:
+      labels:
+        app: contconn-label-01
+    spec:
+      containers:
+        - name: contconn-container-01
+          image: lmldocker/contconn:1.0
+          ports:
+          - containerPort: 8321
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: contconn-service-01
+  namespace: contconn-namespace-01
+spec:
+  type: NodePort
+  selector:
+    app: contconn-label-01
+  ports:
+    - protocol: TCP
+      port: 8321
+      targetPort: 8321
+
+
+# kubectl apply -f contconn-01.yaml
+# kubectl delete -f contconn-01.yaml
+
+
+#    kubectl expose deployment contconn-deployment-v01 --namespace=tauro-namespace --type NodePort --port 8321
+
+#    minikube service contconn-service-01 --namespace=contconn-namespace-01 --url
+
+# http://172.17.0.11:30798/
+# curl http://172.17.0.11:31801/
+

@@ -1,0 +1,146 @@
+reporting services
+Name:                     contconn-service-01
+Namespace:                contconn-namespace-01
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=contconn-label-01
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.109.246.245
+IPs:                      10.109.246.245
+Port:                     <unset>  8321/TCP
+TargetPort:               8321/TCP
+NodePort:                 <unset>  31801/TCP
+Endpoints:                172.18.0.2:8321,172.18.0.3:8321
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+-----------------------
+Name:                     contconn-service-02
+Namespace:                contconn-namespace-01
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=contconn-label-02
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.107.94.96
+IPs:                      10.107.94.96
+Port:                     <unset>  8321/TCP
+TargetPort:               8321/TCP
+NodePort:                 <unset>  30836/TCP
+Endpoints:                172.18.0.4:8321,172.18.0.7:8321
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+-----------------------
+Name:                     contconn-service-03
+Namespace:                contconn-namespace-02
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=contconn-label-03
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.97.182.195
+IPs:                      10.97.182.195
+Port:                     <unset>  8321/TCP
+TargetPort:               8321/TCP
+NodePort:                 <unset>  30155/TCP
+Endpoints:                172.18.0.10:8321,172.18.0.8:8321
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+-----------------------
+Name:                     contconn-service-04
+Namespace:                contconn-namespace-02
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=contconn-label-04
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.105.134.201
+IPs:                      10.105.134.201
+Port:                     <unset>  8321/TCP
+TargetPort:               8321/TCP
+NodePort:                 <unset>  30958/TCP
+Endpoints:                172.18.0.11:8321,172.18.0.14:8321
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+-----------------------
+Name:              contconn-service-05
+Namespace:         contconn-namespace-01
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=contconn-label-05
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.107.222.64
+IPs:               10.107.222.64
+Port:              <unset>  8321/TCP
+TargetPort:        8321/TCP
+Endpoints:         172.18.0.15:8321,172.18.0.17:8321
+Session Affinity:  None
+Events:            <none>
+-----------------------
+Name:              contconn-service-06
+Namespace:         contconn-namespace-01
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=contconn-label-06
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.104.14.28
+IPs:               10.104.14.28
+Port:              <unset>  8321/TCP
+TargetPort:        8321/TCP
+Endpoints:         172.18.0.18:8321,172.18.0.19:8321
+Session Affinity:  None
+Events:            <none>
+-----------------------
+Name:              contconn-service-07
+Namespace:         contconn-namespace-02
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=contconn-label-07
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.101.150.81
+IPs:               10.101.150.81
+Port:              <unset>  8321/TCP
+TargetPort:        8321/TCP
+Endpoints:         172.18.0.20:8321,172.18.0.21:8321
+Session Affinity:  None
+Events:            <none>
+-----------------------
+Name:              contconn-service-08
+Namespace:         contconn-namespace-02
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=contconn-label-08
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.105.106.5
+IPs:               10.105.106.5
+Port:              <unset>  8321/TCP
+TargetPort:        8321/TCP
+Endpoints:         172.18.0.22:8321,172.18.0.23:8321
+Session Affinity:  None
+Events:            <none>
+-----------------------
+-----------------------
+http://172.17.0.11:31801
+http://172.17.0.11:30836
+http://172.17.0.11:30155
+http://172.17.0.11:30958
+😿  service contconn-namespace-01/contconn-service-05 has no node port
+😿  service contconn-namespace-01/contconn-service-06 has no node port
+😿  service contconn-namespace-02/contconn-service-07 has no node port
+😿  service contconn-namespace-02/contconn-service-08 has no node port

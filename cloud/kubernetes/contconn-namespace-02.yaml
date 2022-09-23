@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: contconn-namespace-02
+
+# kubectl create -f contconn-namespace-02.yaml
+# imperative mode: kubectl create namespace tauro-namespace

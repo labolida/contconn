@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contconn-deployment-v03
+  namespace: tauro-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contconn-label-v03
+  template:
+    metadata:
+      labels:
+        app: contconn-label-v03
+    spec:
+      hostname: contconn-hostname-v03
+      containers:
+        - name: contconn-container-v03
+          image: lmldocker/contconn:1.0
+          ports:
+          - containerPort: 8321
+
+# kubectl apply -f kube-deployment-v03.yaml
+# kubectl exec -it pod/contconn-deployment-v03-757cfbf75f-zx8mr --namespace=tauro-namespace -- /bin/bash
+# 
+# kubectl exec -it pod/contconn-deployment-v03-757cfbf75f-wxrm2 --namespace=tauro-namespace -- /bin/bash
+
+
+# kubectl exec -it pod/contconn-deployment-v02-d59648bc5-m6jbn --namespace=tauro-namespace -- /bin/bash
+
+
