@@ -215,6 +215,37 @@ DELETE
 	kubectl exec -it contconn-deployment-v02-d59648bc5-mvdnc --namespace=tauro-namespace -- /bin/bash
 
 
+kubectl exec -it pod/contconn-deployment-01-555b56f75-fw2bv --namespace=contconn-namespace-01 -- /bin/bash
+
+
+
+
+# NSLOOKUP ALPINE TTY
+
+kubectl run alpine --image=alpine -i --tty
+
+kubectl run alpine --image=alpine --namespace=contconn-namespace-01 -i --tty
+
+nslookup contconn-deployment-01
+
+
+kubectl exec pod/coredns-64897985d-87nvc --namespace=kube-system  -it -- /bin/bash
+
+
+kubectl exec pod/contconn-deployment-01-555b56f75-fw2bv --namespace=contconn-namespace-01  -it -- /bin/bash
+
+
+http://contconn-service-05.contconn-namespace-01:8321
+
+
+# TEST using domainname as service(NotExposed/ClusterIp) on another namespace
+
+http://172.17.0.11:31801
+
+http://172.17.0.11:31801/call?url=http://contconn-service-08.contconn-namespace-02:8321
+
+
+
 
 
 
@@ -224,15 +255,21 @@ DELETE
 
 # ContConn refact
 
+contconn-namespace-01   service/contconn-service-01         NodePort    10.109.246.245   <none>        8321:31801/TCP           85m
+contconn-namespace-01   service/contconn-service-02         NodePort    10.107.94.96     <none>        8321:30836/TCP           79m
+contconn-namespace-01   service/contconn-service-05         ClusterIP   10.107.222.64    <none>        8321/TCP                 79m
+contconn-namespace-01   service/contconn-service-06         ClusterIP   10.104.14.28     <none>        8321/TCP                 79m
+contconn-namespace-02   service/contconn-service-03         NodePort    10.97.182.195    <none>        8321:30155/TCP           79m
+contconn-namespace-02   service/contconn-service-04         NodePort    10.105.134.201   <none>        8321:30958/TCP           79m
+contconn-namespace-02   service/contconn-service-07         ClusterIP   10.101.150.81    <none>        8321/TCP                 79m
+contconn-namespace-02   service/contconn-service-08         ClusterIP   10.105.106.5     <none>        8321/TCP                 79m
 
-contconn-namespace-01   service/contconn-service-01         NodePort    10.108.34.221    <none>        8321:32465/TCP           3m35s
-contconn-namespace-01   service/contconn-service-02         NodePort    10.101.127.235   <none>        8321:30781/TCP           3m34s
-contconn-namespace-01   service/contconn-service-05         ClusterIP   10.102.89.249    <none>        8321/TCP                 3m34s
-contconn-namespace-01   service/contconn-service-06         ClusterIP   10.96.198.24     <none>        8321/TCP                 3m34s
-contconn-namespace-02   service/contconn-service-03         NodePort    10.100.75.116    <none>        8321:31698/TCP           3m34s
-contconn-namespace-02   service/contconn-service-04         NodePort    10.107.117.127   <none>        8321:32740/TCP           3m34s
-contconn-namespace-02   service/contconn-service-07         ClusterIP   10.106.96.138    <none>        8321/TCP                 3m34s
-contconn-namespace-02   service/contconn-service-08         ClusterIP   10.104.15.6      <none>        8321/TCP                 3m33s
+http://172.17.0.11:31801
+http://172.17.0.11:30836
+http://172.17.0.11:30155
+http://172.17.0.11:30958
+
+
 
 
 curl http://172.17.0.11:32465
