@@ -246,10 +246,10 @@ http://172.17.0.11:31801/call?url=http://contconn-service-08.contconn-namespace-
 
 
 
+# LoadBalancer
 
-
-
-
+http://172.17.0.11:32441/setName?name=accessA
+http://172.17.0.11:32441/getName
 
 
 
