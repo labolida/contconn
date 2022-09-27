@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contconn-deployment-09
+  namespace: contconn-namespace-01
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contconn-label-09
+  template:
+    metadata:
+      labels:
+        app: contconn-label-09
+    spec:
+      containers:
+        - name: contconn-container-09
+          image: lmldocker/contconn:1.0
+          ports:
+          - containerPort: 8321
+          resources:
+            limits:
+              memory: 200M
+              cpu: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: contconn-service-09
+  namespace: contconn-namespace-01
+spec:
+  type: LoadBalancer
+  selector:
+    app: contconn-label-09
+  ports:
+    - protocol: TCP
+      port: 8321
+      targetPort: 8321
+
+
+# kubectl apply -f contconn-09.yaml
+# kubectl delete -f contconn-09.yaml
+
+# kubectl describe Service contconn-service-09 --namespace=contconn-namespace-01
+
+###    Name:                     contconn-service-09
+###    Namespace:                contconn-namespace-01
+###    Labels:                   <none>
+###    Annotations:              <none>
+###    Selector:                 app=contconn-label-09
+###    Type:                     LoadBalancer
+###    IP Family Policy:         SingleStack
+###    IP Families:              IPv4
+###    IP:                       10.109.27.49
+###    IPs:                      10.109.27.49
+###    Port:                     <unset>  8321/TCP
+###    TargetPort:               8321/TCP
+###    NodePort:                 <unset>  31217/TCP
+###    Endpoints:                172.18.0.14:8321,172.18.0.20:8321
+###    Session Affinity:         None
+###    External Traffic Policy:  Cluster
+###    Events:                   <none>
+
+
+# kubectl describe Deployment contconn-deployment-09 --namespace=contconn-namespace-01
+
