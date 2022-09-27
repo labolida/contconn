@@ -291,32 +291,6 @@ kubectl delete -f contconn-08.yaml
 
 
 
-
-
-
-
-
-# TAURO
-	
-	docker image tag lmldock/image-aldebaran-tauro 127.0.0.1:5000/image-aldebaran-tauro
-
-	kubectl apply -f tauro-deployment.yaml --namespace=tauro-namespace
-
-	kubectl delete -f tauro-deployment.yaml --namespace=tauro-namespace
-
-
- LOGs
-
-	kubectl logs tauro-deployment-86dc5bb5f4-95g78 --namespace=tauro-namespace
-
-		Error from server (BadRequest): 
-			container "contconn-container" in pod "tauro-deployment-86dc5bb5f4-zk55g" 
-				is waiting to start: 
-					trying and failing to pull image
-
-
-
-
 Switch context
 
 	kubectl config set-context --current --namespace=tauro-namespace 
